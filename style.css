@@ -2,7 +2,7 @@
 Color pallete. This section defines variables for the color pallete,
 so that we can refer to particular colors by name instead of hexadecimal values.
 This is applied to the 'root' psuedo-element, which just means that these color
-variables are available to be used anywhere in our html document
+variables are available to be used anywhere in our hpl document
 */
 :root {
     --white: #FFFFFF;
@@ -49,7 +49,7 @@ body {
     margin-bottom: 0;
 }
 
-.team-member-card {
+.profile-card {
     display: flex;
     flex-direction: column;
     background: linear-gradient(to right, var(--beige), var(--purple));
@@ -59,7 +59,7 @@ body {
 }
 
 /* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
-.team-member-card-image {
+.profile-card-image {
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1.2/1; /* Maintain a nice image ratio */
@@ -83,13 +83,15 @@ body {
   height: 100%;
 }
 
-.images img {
+.images img,
+.images video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 1;
 }
 
 .before-wrapper {
@@ -177,13 +179,13 @@ body {
 
 /* end of the slider code  */
 
-.team-member-card-blurb {
+.profile-card-blurb {
     padding: 1em;
     font-size: 0.97em;
     color: var(--white);
 }
 
-.our-clients-title {
+.about {
     font-size: 1.5em;
     font-weight: 500;
     background: var(--beige);
@@ -194,31 +196,14 @@ body {
     color: var(--purple);
 }
 
-/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
-.client-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: var(--grey);
-    border-radius: 0.5em;
-    padding: 0.5em;
-}
-
 /* now we create names for the grid areas for specific elements */
 #banner { grid-area: banner; }
-#teamMemberCard1 { grid-area: tm1; }
-#teamMemberCard2 { grid-area: tm2; }
-#teamMemberCard3 { grid-area: tm3; }
-#tmnone { grid-area: tmnone; }
-#ourClientsTitle { grid-area: clientsTitle; }
-#clientIcon1 { grid-area: client1; }
-#clientIcon2 { grid-area: client2; }
-#clientIcon3 { grid-area: client3; }
-#clientIcon4 { grid-area: client4; }
-#clientIcon5 { grid-area: client5; }
-#clientIcon6 { grid-area: client6; }
-#clientIcon7 { grid-area: client7; }
-#clientIcon8 { grid-area: client8; }
+#ProfileCard1 { grid-area: p1; }
+#ProfileCard2 { grid-area: p2; }
+#ProfileCard3 { grid-area: p3; }
+#ProfileCard4 { grid-area: p4; }
+#ProfileCard5 { grid-area: p5; }
+#about { grid-area: about; }
 
 /* Use a flexible layout grid */
 .main-container {
@@ -238,44 +223,34 @@ media queries for progressively bigger screen widths
     row-gap: 1em;
     grid-template-areas:
         "banner"
-        "tm1"
-        "tm2"
-        "tm3"
-        "clientsTitle"
-        "client1"
-        "client2"
-        "client3"
-        "client4"
-        "client5"
-        "client6"
-        "client7"
-        "client8";
+        "p1"
+        "p2"
+        "p3"
+        "p4"
+        "p5"
+        "about";
     grid-template-columns: 1fr;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 48em) {
     .main-container {
         grid-template-areas:
             "banner banner banner banner banner banner banner banner"
-            "tm1    tm1    tm1    tm1    tm2    tm2    tm2    tm2"
-            ".      .      tm3    tm3    tm3    tm3    .      ."
-            "clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle"
-            "client1 client1  client1 client1 client2 client2 client2 client2"
-            "client3 client3 client3 client3 client4 client4 client4 client4"
-            "client5 client5 client5 client5 client6 client6 client6 client6"
-            "client7 client7 client7 client7 client8 client8 client8 client8";
+            "p1    p1    p1    p1    p2    p2    p2    p2"
+            "p3    p3    p3    p3    p4    p4    p4    p4"
+            ".      .    p5    p5    p5    p5    .      ."
+            "about about about about about about about about";
         grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
-@media (min-width: 75em) {
+@media (min-width: 88em) {
     .main-container {
         grid-template-areas:
             "banner banner banner banner banner banner banner banner banner banner banner banner"
-            "tm1    tm1    tm1    tm1    tm2    tm2    tm2    tm2    tm3    tm3    tm3    tm3"
-            "clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle"
-            "client1 client1 client1 client2 client2 client2 client3 client3 client3 client4 client4 client4"
-            "client5 client5 client5 client6 client6 client6 client7 client7 client7 client8 client8 client8";
+            "p1    p1    p1    p1    p2    p2    p2    p2    p3    p3    p3    p3"
+            ".     .     p4    p4    p4    p4    p5    p5    p5    p5    .     ."
+            "about about about about about about about about about about about about";
         grid-template-columns: repeat(12, 1fr);
     }
 }
