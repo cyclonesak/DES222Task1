@@ -2,3 +2,5 @@
 #### DES222 Task 1
 
 A responsive design visual essay showcasing my friends embedded tech and what it facilitates for thier lives ...
+
+You can see the page here: [DES222 Task 1](https://sak.free.nf/DES222Task1/)
