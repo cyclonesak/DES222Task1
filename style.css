@@ -1,0 +1,281 @@
+/* 
+Color pallete. This section defines variables for the color pallete,
+so that we can refer to particular colors by name instead of hexadecimal values.
+This is applied to the 'root' psuedo-element, which just means that these color
+variables are available to be used anywhere in our html document
+*/
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --purple: #857891;
+    --light-purple: #e7e0eb;
+    --beige: #dbcfb0;
+    --grey: #f6f6f6;
+    /* add in other color variables for color palette */
+}
+
+/* The body of the document has a white background and is set up as a vertical flexbox. */
+body {
+    background: linear-gradient(to right, var(--purple), var(--beige));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Defines the main container size, we are limiting to 72em max */
+.main-container {
+    max-width: 96;
+    font-family: Inter;
+    color: var(--black);
+}
+
+/* Here we define the aspects of style of our elements other than their grid layout */
+.banner {
+    background: linear-gradient(to right, var(--beige), var(--purple));
+    color: var(--white);
+    padding: 1em 1.5em;
+    border-radius: 0.25em;
+}
+
+.banner-title {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+}
+
+.banner-subtitle {
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.team-member-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, var(--beige), var(--purple));
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.team-member-card-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1.2/1; /* Maintain a nice image ratio */
+}
+
+/* The slider code */
+
+.slider-wrapper {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  --position: 73%;
+}
+
+.images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.images img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.before-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--position);
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.after {
+  z-index: 1;
+}
+
+/* Overlay labels */
+.before-label {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.after-label {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.handle {
+  position: absolute;
+  top: 50%;
+  left: var(--position);
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  padding: 8px;
+  pointer-events: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.handle svg {
+  display: block;
+}
+.handle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 200vh;
+  background: white;
+  z-index: -1;
+}
+
+/* end of the slider code  */
+
+.team-member-card-blurb {
+    padding: 1em;
+    font-size: 0.97em;
+    color: var(--white);
+}
+
+.our-clients-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    background: var(--beige);
+    text-align: center;
+    border-radius: 0.4em;
+    padding: 0.7em;
+    margin-bottom: 0.6em;
+    color: var(--purple);
+}
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.client-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--grey);
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+/* now we create names for the grid areas for specific elements */
+#banner { grid-area: banner; }
+#teamMemberCard1 { grid-area: tm1; }
+#teamMemberCard2 { grid-area: tm2; }
+#teamMemberCard3 { grid-area: tm3; }
+#tmnone { grid-area: tmnone; }
+#ourClientsTitle { grid-area: clientsTitle; }
+#clientIcon1 { grid-area: client1; }
+#clientIcon2 { grid-area: client2; }
+#clientIcon3 { grid-area: client3; }
+#clientIcon4 { grid-area: client4; }
+#clientIcon5 { grid-area: client5; }
+#clientIcon6 { grid-area: client6; }
+#clientIcon7 { grid-area: client7; }
+#clientIcon8 { grid-area: client8; }
+
+/* Use a flexible layout grid */
+.main-container {
+    display: grid;
+    column-gap: 1em;
+}
+  
+/* 
+Responsive Layout breakpoints. We start 'mobile-first' i.e. we define how the layout should look
+for the smallest screen sizes. In this case we want a single column that spans the main container.
+Because this CSS definition comes first, it will apply by default. Then we override it below with 
+media queries for progressively bigger screen widths
+*/
+.main-container {
+    display: grid;
+    column-gap: 1em;
+    row-gap: 1em;
+    grid-template-areas:
+        "banner"
+        "tm1"
+        "tm2"
+        "tm3"
+        "clientsTitle"
+        "client1"
+        "client2"
+        "client3"
+        "client4"
+        "client5"
+        "client6"
+        "client7"
+        "client8";
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 50em) {
+    .main-container {
+        grid-template-areas:
+            "banner banner banner banner banner banner banner banner"
+            "tm1    tm1    tm1    tm1    tm2    tm2    tm2    tm2"
+            ".      .      tm3    tm3    tm3    tm3    .      ."
+            "clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle"
+            "client1 client1  client1 client1 client2 client2 client2 client2"
+            "client3 client3 client3 client3 client4 client4 client4 client4"
+            "client5 client5 client5 client5 client6 client6 client6 client6"
+            "client7 client7 client7 client7 client8 client8 client8 client8";
+        grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 75em) {
+    .main-container {
+        grid-template-areas:
+            "banner banner banner banner banner banner banner banner banner banner banner banner"
+            "tm1    tm1    tm1    tm1    tm2    tm2    tm2    tm2    tm3    tm3    tm3    tm3"
+            "clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle clientsTitle"
+            "client1 client1 client1 client2 client2 client2 client3 client3 client3 client4 client4 client4"
+            "client5 client5 client5 client6 client6 client6 client7 client7 client7 client8 client8 client8";
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
